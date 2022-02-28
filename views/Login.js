@@ -51,7 +51,8 @@ export default function Login(props) {
       <TextInput style={css.login_input} placeholder = 'CPF:' secureTextEntry={true}/>
 
 
-        <TouchableOpacity style={css.login_button} onPress={()=>sendForm()}>
+
+        <TouchableOpacity style={css.login_button} onPress={()=>props.navigation.navigate('Home')}>
           <Text style={css.login_buttonText}> Entrar </Text>
         </TouchableOpacity>
 

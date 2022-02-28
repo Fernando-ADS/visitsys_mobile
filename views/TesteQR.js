@@ -47,6 +47,7 @@ export default function TesteQR() {
 
 
   return (
+    //<ImageBackground source={rexquire(imgbkg)} style={css.img}>
     <View style={css.container2}>
     <View style={css.barcode}>
 
@@ -60,5 +61,6 @@ export default function TesteQR() {
 
     {scanned && <Button title={'Tentar novamente'} onPress={() => setScanned(false)}/>}
     </View>
+    //</ImageBackground>
   );
 }
