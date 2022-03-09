@@ -1,14 +1,14 @@
 const express=require('express');
 const cors=require('cors');
 const bodyParser=require('body-parser');
-const models=require("./models/index.cjs");
+const model=require("./models/index.cjs");
 
-const app=express();
+let app=express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-let user=models.User;
-let recepcionista=models.Recepcionista;
+let user=model.User;
+let recepcionista=model.Recepcionista;
 
 let port=process.env.PORT || 3000;
 app.listen(port,(req,res)=> {

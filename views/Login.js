@@ -20,7 +20,7 @@ export default function Login(props) {
   const [cpf, setCpf] = useState(null);
   const [login, setLogin] = useState(null);
 
-
+  /*
   async function sendForm(){
     let response = await fetch ('http://192.168.2.6:3000/login', {
         method: 'POST',
@@ -34,27 +34,57 @@ export default function Login(props) {
         })
     });
   }
+  */
 
+  //ENVIA OS DADOS PARA O FORMULÁRIO DE LOGIN
+  async function sendForm(){
+    //console.log('passou aki');
+    
+    let response = await fetch ('http://192.168.2.6:3000/login', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          cpf: cpf
+        })
+    });
+  }
 
   return (
 
-    <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={[css.container]}>
-    <ImageBackground source={require(imgbkg)} style={css.img}>
-    <View style={css.login_logomarca}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={[css.container]}>
 
+    <ImageBackground source={require(imgbkg)} style={css.img}>
+
+    <View style={css.login_logomarca}>
       <Image source={require('../assets/img/logomarca.png')}/>
     </View>
 
 
+
     <View style={css.login_form}>
-      <TextInput style={css.login_input} placeholder = 'Email:'/>
-      <TextInput style={css.login_input} placeholder = 'CPF:' secureTextEntry={true}/>
+      <TextInput style={css.login_input}
+        onChangeText={(text)=>setEmail(text)}
+        placeholder = 'Email:'
+      />
 
+      <TextInput style={css.login_input}
+        placeholder = 'CPF:'
+        onChangeText={(text)=>setCpf(text)}
+        secureTextEntry={true}
+      />
 
-
-        <TouchableOpacity style={css.login_button} onPress={()=>props.navigation.navigate('Home')}>
-          <Text style={css.login_buttonText}> Entrar </Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={css.login_button}
+        //onPress={()=>props.navigation.navigate('Home')}
+        onPress={sendForm}
+        >
+        <Text style={css.login_buttonText}> Entrar </Text>
+      </TouchableOpacity>
 
     </View>
     </ImageBackground>
