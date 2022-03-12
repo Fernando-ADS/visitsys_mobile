@@ -16,9 +16,19 @@ app.listen(port,(req,res)=> {
 });
 
 
-app.post('/login',async (req,res)=>{
+app.get('/teste', (req,res)=>{
+  res.send('servidor back rodando');
+})
+
+
+app.post('/login2',async (req,res)=>{
   let response=await recepcionista.findOne({
     where:{email:req.body.email, cpf:req.body.cpf}
   });
   console.log(response);
+});
+
+
+app.post('/login', (req,res)=>{
+  console.log(req.body);
 });

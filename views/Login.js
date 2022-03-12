@@ -38,9 +38,10 @@ export default function Login(props) {
 
   //ENVIA OS DADOS PARA O FORMULÁRIO DE LOGIN
   async function sendForm(){
-    //console.log('passou aki');
-    
-    let response = await fetch ('http://192.168.2.6:3000/login', {
+    console.log('passou aki');
+
+    //troquei para o ip da maquina e vez do ip do expo
+    let response = await fetch ('http://192.168.2.4:3000/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -81,7 +82,7 @@ export default function Login(props) {
 
       <TouchableOpacity style={css.login_button}
         //onPress={()=>props.navigation.navigate('Home')}
-        onPress={sendForm}
+        onPress={()=>sendForm()}
         >
         <Text style={css.login_buttonText}> Entrar </Text>
       </TouchableOpacity>
